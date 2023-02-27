@@ -1,6 +1,6 @@
 # Tensorflow object detection API inference with libtensorflow
 
-Testing models from object detection API using Tensorflow c++ library, model tested in this repo: ssd_resnet50_v1_fpn_640x640_coco17_tpu-8
+Testing models from object detection API using Tensorflow c++ library.
 
 ##  Dependencies
 
@@ -20,3 +20,9 @@ cmake --build . --config Release
 ```
 ./libtensorflow_cc_object_detection --saved_model_path=/path/to/saved_model/ --video_path=/path/to/video.mp4
 ```
+
+|Model tested from [Tf2 model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)|
+|-----------|
+|ssd_resnet50_v1_fpn_640x640_coco17_tpu-8|
+|ssd_mobilenet_v2_320x320_coco17_tpu-8|
+|ssd_resnet101_v1_fpn_640x640_coco17_tpu-8|

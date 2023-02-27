@@ -56,9 +56,11 @@ int main (int argc, char *argv[])
   cv::VideoCapture cap(video_path);
 
   cv::Mat frame;
+  cv::Mat blob;
   while (cap.read(frame))
   {
-    cv::Mat blob = frame;
+   
+    cv::cvtColor(frame, blob, cv::COLOR_BGR2RGB);
     // Convert the frame to a TensorFlow tensor
     tensorflow::Tensor input_tensor(tensorflow::DT_UINT8, tensorflow::TensorShape({1, blob.rows, blob.cols, blob.channels()}));
     auto input_tensor_mapped = input_tensor.tensor<uint8_t, 4>();
