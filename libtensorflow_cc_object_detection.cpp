@@ -22,12 +22,26 @@ int main (int argc, char *argv[])
     return 0;  
   }
 
+  const std::string saved_model_path = parser.get<std::string>("saved_model_path");
+  const std::string video_path = parser.get<std::string>("video_path");
+
+  if (saved_model_path.empty()){
+      std::cerr << "Missing saved model path" << std::endl;
+      std::exit(1);
+  }
+
+  if (video_path.empty()){
+    std::cerr << "Missing video path" << std::endl;
+    std::exit(1);
+  }
+
+
+
   SavedModelBundle bundle;
   SessionOptions session_options;
   RunOptions run_options;
 
-  const std::string saved_model_path = parser.get<std::string>("saved_model_path");
-  const std::string video_path = parser.get<std::string>("video_path");
+
 
   Status status = LoadSavedModel(session_options, run_options, 
   saved_model_path, {kSavedModelTagServe}, &bundle);
