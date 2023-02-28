@@ -106,14 +106,9 @@ int main (int argc, char *argv[])
     std::exit(1);
   }
 
-
-
   SavedModelBundle bundle;
   SessionOptions session_options;
   RunOptions run_options;
-
-
-
   Status status = LoadSavedModel(session_options, run_options, 
   saved_model_path, {kSavedModelTagServe}, &bundle);
   if (!status.ok()) {
@@ -123,9 +118,7 @@ int main (int argc, char *argv[])
 
   // Create a new session and attach the graph
   Session* session = bundle.session.get();
-
   cv::VideoCapture cap(video_path);
-
   cv::Mat frame;
   cv::Mat blob;
   while (cap.read(frame))
@@ -206,10 +199,7 @@ int main (int argc, char *argv[])
     }
     
     cv::imshow("", frame);
-    cv::waitKey(1);
-
-    
-
+    cv::waitKey(1);   
   }
   
 
