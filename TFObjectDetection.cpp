@@ -73,21 +73,27 @@ tensorflow::Tensor TFObjectDetection::preprocess(const cv::Mat& frame)
 {
     cv::Mat blob;
     cv::cvtColor(frame, blob, cv::COLOR_BGR2RGB);
+    
     // Convert the frame to a TensorFlow tensor
     tensorflow::Tensor input_tensor(tensorflow::DT_UINT8, tensorflow::TensorShape({1, blob.rows, blob.cols, blob.channels()}));
-    auto input_tensor_mapped = input_tensor.tensor<uint8_t, 4>();
+    
+    // METHOD 1
+    // auto input_tensor_mapped = input_tensor.tensor<uint8_t, 4>();
+    // // Copy the data from the input frame to the input tensor
+    // for (int y = 0; y < blob.rows; ++y) {
+    //     const uchar* row_ptr = blob.ptr<uchar>(y);
+    //     for (int x = 0; x < blob.cols; ++x) {
+    //         const uchar* pixel_ptr = row_ptr + (x * blob.channels());
+    //         for (int c = 0; c < blob.channels(); ++c) {
+    //         input_tensor_mapped(0, y, x, c) = static_cast<uint8_t>(pixel_ptr[c]);
+    //         }
+    //     }
+    // }
 
-    // Copy the data from the input frame to the input tensor
-    for (int y = 0; y < blob.rows; ++y) {
-        const uchar* row_ptr = blob.ptr<uchar>(y);
-        for (int x = 0; x < blob.cols; ++x) {
-            const uchar* pixel_ptr = row_ptr + (x * blob.channels());
-            for (int c = 0; c < blob.channels(); ++c) {
-            input_tensor_mapped(0, y, x, c) = static_cast<uint8_t>(pixel_ptr[c]);
-            }
-        }
-    }
+    // METHOD 2
+    std::memcpy(input_tensor.flat<uint8_t>().data(), blob.data, blob.total() * blob.elemSize());
     return input_tensor;
+
 }
 
 vector<Detection> TFObjectDetection::infer(const cv::Mat& frame)
