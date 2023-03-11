@@ -18,6 +18,7 @@ public:
         model_path_(model_path),
         score_threshold_(score_threshold) 
     {
+        std::cout << model_path << std::endl;
         tensorflow::SessionOptions session_options;
         tensorflow::RunOptions run_options; 
         tensorflow::Status status = LoadSavedModel(session_options, run_options, 
