@@ -15,6 +15,10 @@ cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 cmake --build . --config Release
 ```
+To build setting test and benchmarks OFF:
+```
+cmake -DBUILD_TESTS=OFF -DBUILD_BENCHMARKS=OFF ..
+```
 
 ##  Usage
 ```
