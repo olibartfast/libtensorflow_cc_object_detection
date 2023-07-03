@@ -4,8 +4,8 @@ project(libtensorflow_cc_object_detection)
 find_package(TensorFlow REQUIRED)
 find_package(OpenCV REQUIRED)
 
-option(BUILD_TESTS "Build test target" ON)
-option(BUILD_BENCHMARKS "Build benchmark target" ON)
+option(BUILD_TESTS "Build test target" OFF)
+option(BUILD_BENCHMARKS "Build benchmark target" OFF)
 
 if(BUILD_TESTS)
     find_package(GTest REQUIRED)
