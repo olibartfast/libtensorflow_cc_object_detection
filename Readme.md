@@ -4,8 +4,8 @@ Testing models from object detection API using Tensorflow c++ library.
 
 ##  Dependencies
 
-* OpenCV  (tested 4.6.0)
-* Libtensorflow_cc(tested 2.11, prebuilt library from [
+* OpenCV  (tested 4.7.0)
+* Libtensorflow_cc(tested 2.13, prebuilt library from [
 Institut für Kraftfahrzeuge](https://github.com/ika-rwth-aachen/libtensorflow_cc) )
 
 ## Build 

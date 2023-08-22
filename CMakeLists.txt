@@ -1,9 +1,8 @@
-cmake_minimum_required(VERSION 3.0)
-
+cmake_minimum_required(VERSION 3.20...3.27)
 project(libtensorflow_cc_object_detection)
 find_package(TensorFlow REQUIRED)
 find_package(OpenCV REQUIRED)
-
+set(CMAKE_CXX_STANDARD 17)
 option(BUILD_TESTS "Build test target" OFF)
 option(BUILD_BENCHMARKS "Build benchmark target" OFF)
 
